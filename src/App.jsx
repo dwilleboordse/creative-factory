@@ -602,7 +602,7 @@ export default function App() {
 
       // Small delay between requests to avoid rate limiting
       if (i < variations.length - 1) {
-        await new Promise(r => setTimeout(r, 500));
+        await new Promise(r => setTimeout(r, 2500));
       }
     }
 
