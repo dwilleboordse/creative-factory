@@ -100,8 +100,9 @@ const SIZE_OPTIONS = [
 ];
 
 const MODELS = [
-  { key: "gemini-2.5-flash-preview-05-20", label: "Flash", price: 0.039, desc: "Fast" },
-  { key: "imagen-4.0-generate-preview-06-06", label: "Imagen 4", price: 0.04, desc: "Best quality" },
+  { key: "gemini-2.0-flash-exp", label: "Gemini Flash", price: 0.039, desc: "Fast, supports refs", type: "gemini" },
+  { key: "imagen-4.0-generate-001", label: "Imagen 4", price: 0.04, desc: "Best quality", type: "imagen" },
+  { key: "imagen-4.0-fast-generate-001", label: "Imagen 4 Fast", price: 0.02, desc: "Fastest", type: "imagen" },
 ];
 
 const ASSET_TYPES = {
@@ -525,7 +526,7 @@ export default function App() {
         for (const ref of (job.include_refs || ["product"])) { const img = await getRef(ref); if (img) images.push(img); }
         const res = await fetch("/api/generate", {
           method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: job.prompt, images, model: geminiModel }),
+          body: JSON.stringify({ prompt: job.prompt, images, model: geminiModel, modelType: modelInfo.type }),
         });
         const data = await res.json();
         if (data.error) { errors++; setGenProgress(p => ({ ...p, errors })); setGeneratedImages(prev => [...prev, { ...job, index: i, error: typeof data.error === "string" ? data.error : data.error.message, image: null }]); }
