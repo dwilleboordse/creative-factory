@@ -100,7 +100,7 @@ const SIZE_OPTIONS = [
 ];
 
 const MODELS = [
-  { key: "gemini-2.0-flash-exp", label: "Gemini Flash", price: 0.039, desc: "Fast, supports refs", type: "gemini" },
+  { key: "gemini-2.5-flash-image", label: "Gemini Flash", price: 0.039, desc: "Fast, supports refs", type: "gemini" },
   { key: "imagen-4.0-generate-001", label: "Imagen 4", price: 0.04, desc: "Best quality", type: "imagen" },
   { key: "imagen-4.0-fast-generate-001", label: "Imagen 4 Fast", price: 0.02, desc: "Fastest", type: "imagen" },
 ];
